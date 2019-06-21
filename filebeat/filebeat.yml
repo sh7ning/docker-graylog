@@ -1,0 +1,19 @@
+name: mm
+
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /www/monitor/storage/logs/*.log
+    encoding: utf-8
+    scan_frequency: 10s
+    tags: ["filebeat", "lumen_log", "mm"]
+    fields:
+      list: "lumen_log_list"
+    multiline.pattern: ^\[\d{4}
+    multiline.negate: true
+    multiline.match: after
+    tail_files: true #文件末尾开始读取
+
+output.logstash:
+  hosts: ["192.168.3.92:5044"]
