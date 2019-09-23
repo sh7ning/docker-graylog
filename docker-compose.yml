@@ -22,7 +22,8 @@ services:
             - ./runtime/elasticsearch/data:/usr/share/elasticsearch/data
 
     graylog:
-        image: graylog/graylog:3.0
+        image: graylog/graylog:3.1
+        container_name: container-graylog
         hostname: graylog
         volumes:
             - ./runtime/graylog/journal:/usr/share/graylog/data/journal
